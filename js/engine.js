@@ -708,8 +708,12 @@ function setGameState(_state, command, randomseed) {
 
 	if (canYoutube) {
 		if ('youtube' in state.metadata) {
+			var youtubeloop = '';
+			if(!'noloop_music' in state.metadata) {
+				youtubeloop = '&loop=1';
+			}
 			var youtubeid=state.metadata['youtube'];
-			var url = "https://www.youtube.com/embed/"+youtubeid+"?autoplay=1&loop=1&playlist="+youtubeid;
+			var url = "https://www.youtube.com/embed/"+youtubeid+"?autoplay=1"+youtubeloop;
 			ifrm = document.createElement("IFRAME");
 			ifrm.setAttribute("src",url);
 			ifrm.style.visibility="hidden";
@@ -724,6 +728,10 @@ function setGameState(_state, command, randomseed) {
 
 		/*
 		if ('youtube' in state.metadata) {
+			var youtubeloop = '';
+			if(!'noloop_music' in state.metadata) {
+				youtubeloop = '&loop=1';
+			}
 			var div_container = document.createElement('DIV');
 			var div_front = document.createElement('DIV');
 			div_front.style.zIndex=-100;	
@@ -739,7 +747,7 @@ function setGameState(_state, command, randomseed) {
 			div_container.appendChild(div_front);
 			
 			var youtubeid=state.metadata['youtube'];
-			var url = "https://youtube.googleapis.com/v/"+youtubeid+"?autoplay=1&loop=1&playlist="+youtubeid;
+			var url = "https://youtube.googleapis.com/v/"+youtubeid+"?autoplay=1"+youtubeloop;
 			ifrm = document.createElement("IFRAME");
 			ifrm.setAttribute("src",url);
 			ifrm.style.visibility="hidden";
